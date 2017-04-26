@@ -1,0 +1,46 @@
+extends base
+
+block Body
+  nav(class="navbar navbar-default navbar-fixed-top" role="navigation")
+    div(class="container")
+      div(class="navbar-header page-scroll")
+        img(class="logo" src="images/logo_edited.png")  
+        button(type="button", class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse")
+          span(class="sr-only") Toggle navigation
+          span(class="icon-bar")
+          span(class="icon-bar")
+          span(class="icon-bar")
+        a(class="navbar-brand page-scroll" href="#page-top") Minneapolis<br />Mayhem Rugby
+      div(class="collapse navbar-collapse navbar-ex1-collapse")
+        ul(class="nav navbar-nav")
+          li(class="hidden") 
+            a(class="page-scroll" href="#page-top")
+          li
+            a(class="page-scroll" href="#sponsors") Sponsors
+          li
+            a(class="page-scroll" href="#mission") Mission
+          li
+            a(class="page-scroll" href="#calendar") Calendar
+          li
+            a(class="page-scroll" href="#contact") Contact
+  section(class="intro-section" id="intro")
+    img(class="img-responsive" src="images/Mayhem_11.JPG")
+  section(id='sponsors' class='sponsors-section')
+    .container
+      div(class="col-lg-12 container-title")
+        h1= "Sponsors"
+      include sponsors.pug
+  section(id='mission' class='mission-section')
+    .container
+      div(class="col-lg-12 container-title")
+        h1= "Mission" 
+      include mission.pug
+  section(id='calendar' class='calendar-section')
+    .container
+      div(class="col-lg-12 container-title")
+        h1= "Spring 2017 Calendar"
+      include calendar.pug    
+  section(id='contact' class='contact-section')
+    .container
+      div(class="col-lg-12 container-title")
+        h1= "Contact" 

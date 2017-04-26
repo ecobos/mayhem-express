@@ -1,0 +1,174 @@
+/* MOBILE */
+body {
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ---- Navigation Bar & Intro Section--- */
+.intro-section {
+    padding-top: 57px;
+    text-align: center;
+    background: #fff;
+    background: no-repeat center center;
+    background-attachment: scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.logo {
+    height: 4em;
+    width: auto;
+    float: left;
+    padding-left: 2em;
+    transition: height .5s ease-in-out;
+}
+
+.logo-min {
+    height: 3em;
+    padding-top: 0.6em;
+    transition: height .5s ease-in-out;
+}
+
+.navbar-brand {
+    white-space: pre-line;
+    padding: 6px 15px;
+    transition: text .5s ease-in-out;
+}
+
+.navbar-brand-min {
+    padding: 15px 15px;
+}
+
+.container-title {
+    padding-bottom: 2.5em;
+}
+
+
+/* --- Sponsors Section --- */
+.sponsors-section {
+    padding-top: 3em;
+    padding-bottom: 2em;
+    text-align: center;
+    background: #fff;
+}
+
+#saloon-logo, #lavender-logo, #lions-logo, #facebook-direct, #facebook-redirect, #email {
+    padding-bottom: 4em;
+}
+
+#saloon-logo>img {
+    width: 150%;
+}
+
+#lions-logo>img {
+    height: inherit;
+}
+
+#lions-logo {
+    height: 20em;
+}
+
+
+/* --- Mission Section --- */
+.mission-section {
+    height: 70%;
+    padding-top: 40px;
+    text-align: center;
+    background: #eee;
+}
+
+.calendar-section {
+    height: 100%;
+    padding-top: 40px;
+    text-align: center;
+    background: #fff;    
+}
+
+#nextEventDate {
+    padding-top: 1em;
+}
+
+#nextEventMonth {
+    font-size: x-large;
+    color: red;
+}
+
+#nextEventDayNumber {
+    font-size: xx-large;
+    margin-top: -15px;
+}
+
+#nextEventWhere {
+    padding-top: 1em;
+}
+
+#nextEventWhen {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    height: 110%;
+    padding-top: 40px;
+    text-align: center;
+    background: #eee;
+}
+
+.glyphicon {
+    padding-right: 0.5em;
+}
+
+/* Larger Phones */
+@media(min-width: 325px){
+    .logo{
+        padding-left: 3em;
+    }
+}
+
+/* Tablets */
+@media(min-width: 767px) {
+    .navbar-nav {
+        float: right;
+    }
+    .navbar {
+        padding: 12px 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .top-nav-collapse {
+        padding: 0;
+    }
+
+    .logo {
+        height: 4em;
+        width: auto;
+        float: left;
+        padding-right: 1em;
+    }
+
+    .logo-min {
+        height: 3em;
+        padding-top: 0.6em;
+    }
+
+    .container-title {
+        padding-bottom: 4em;
+    }
+
+    .sponsors-section, .mission-section, .calendar-section, .contact-section {
+        padding-top: 150px;
+        height: 100%;
+    }
+}
