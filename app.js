@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,6 +10,7 @@ require('dotenv').config();
 var index = require('./routes/index');
 
 var app = express();
+app.use(compression());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
