@@ -61,12 +61,15 @@ html {
     background: #fff;
 }
 
-#saloon-logo, #lavender-logo, #lions-logo, #facebook-direct, #facebook-redirect, #email {
+#saloon-logo, #lush-logo, #lavender-logo, #lions-logo, #facebook-direct, #facebook-redirect, #email {
     padding-bottom: 4em;
 }
 
 #saloon-logo>img {
     width: 150%;
+}
+#lush-logo>img {
+    width: 90%;
 }
 
 #lions-logo>img {
@@ -80,14 +83,14 @@ html {
 
 /* --- Mission Section --- */
 .mission-section {
-    height: 70%;
+    /*height: 70%; */
     padding-top: 40px;
     text-align: center;
     background: #eee;
 }
 
 .calendar-section {
-    height: 100%;
+    padding-bottom: 2em;
     padding-top: 40px;
     text-align: center;
     background: #fff;    
@@ -118,7 +121,6 @@ html {
 
 /* --- Contact Section --- */
 .contact-section {
-    height: 110%;
     padding-top: 40px;
     text-align: center;
     background: #eee;
@@ -126,6 +128,13 @@ html {
 
 .glyphicon {
     padding-right: 0.5em;
+}
+
+footer {
+    text-align: center;
+    color: #95D0F1;
+    background-color: #0A5589;
+    padding: 0.3em;
 }
 
 /* Larger Phones */
@@ -165,6 +174,10 @@ html {
 
     .container-title {
         padding-bottom: 4em;
+    }
+
+    .mission-section {
+        height: 70%;
     }
 
     .sponsors-section, .mission-section, .calendar-section, .contact-section {

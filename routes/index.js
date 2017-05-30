@@ -2,7 +2,9 @@ var express = require('express');
 var reqPromise = require('request-promise');
 var moment = require('moment');
 var router = express.Router();
-var googleCalApiKey = 'AIzaSyCCYVAJfxTocPvk8UDy45dNZ2yfcyKi4j8';
+let googleCalApiKey = process.env.GOOGLE_CAL_KEY;
+let googleCalId = process.env.GOOGLE_CAL_ID;
+let datetime_Now = new Date().toJSON();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -17,31 +19,38 @@ router.get('/minutes/:year/:month/:day', function (req, res, next) {
   res.render('minutes');
 });
 
-router.get('/events', function (req, res, next) {
-  res.setHeader('Content-Type', 'application/json')
-  reqPromise('https://www.googleapis.com/calendar/v3/calendars/mayhemrfc.com_cv7q89eqgdpjaq1sqpv06n6chs%40group.calendar.google.com/events?maxResults=10&key=' + googleCalApiKey)
+router.get('/events', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  reqPromise('https://www.googleapis.com/calendar/v3/calendars/' + googleCalId + '/events?maxResults=10&timeMin=' + datetime_Now + '&orderBy=startTime&singleEvents=true&key=' + googleCalApiKey)
     .then(callResult => {
+      let FIRST_EVENT = 0;
       var jsonResult = JSON.parse(callResult);
+      //console.log(JSON.stringify(jsonResult));
 
-      /**  Format only the first element, aka the next event*/
-      var next = moment(jsonResult.items[0].start.dateTime);
-      jsonResult.items[0].start.dateMonth = next.format("MMMM");
-      jsonResult.items[0].start.dateDayNumber = next.format("DD");
-      jsonResult.items[0].start.dateDay = next.format("dddd");
-      jsonResult.items[0].start.time = next.format("h:mma");
+      let nextEventStart = moment(jsonResult.items[FIRST_EVENT].start.dateTime);
+      let nextEventEnd = moment(jsonResult.items[FIRST_EVENT].end.dateTime);
 
-      var nextEnd = moment(jsonResult.items[0].end.dateTime);
-      jsonResult.items[0].end.time = nextEnd.format("h:mma");
+      var formated_events = jsonResult.items.map(event => {
+        let origin_start = moment(event.start.dateTime);
+        event.start = { dateFormatShort: origin_start.format("dddd, MMMM Do"), time: origin_start.format("h:mma") };
+        return event;
+      });
+    
+      /**  Format only the first element (next event) */
+      
+      console.log(nextEventStart);
+      formated_events[FIRST_EVENT].start = {
+        dateMonth: nextEventStart.format("MMMM"),
+        dateDayNumber: nextEventStart.format("DD"),
+        dateDay: nextEventStart.format("dddd"),
+        time: nextEventStart.format("h:mma")
+      };
+      
+      formated_events[FIRST_EVENT].end.time = nextEventEnd.format("h:mma");
 
-      var itemCount = jsonResult.items.length; 
-      for(var i = 1; i < itemCount; i++){
-          var start = moment(jsonResult.items[i].start.dateTime);
-          jsonResult.items[i].start.dateFormatShort = start.format("dddd, MMMM Do");
-          jsonResult.items[i].start.time = start.format("h:mma");
-      }
-      res.status(200).send(JSON.stringify(jsonResult)); 
+      res.status(200).send(JSON.stringify({ events: formated_events }));
     })
-    .catch(err => { res.status(400).send("Error contacting Google Calendar API: "+ err); })
+    .catch(err => { res.status(400).send("Error contacting Google Calendar API: " + err); })
 });
 
 module.exports = router;
