@@ -1,7 +1,9 @@
+let HOST = "http://162.243.168.109:3000";
+
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/events",
+  "url": HOST+"/events",
   "method": "GET",
   "headers": {
     "content-type": "application/json",
@@ -10,7 +12,6 @@ var settings = {
 }
 
 $.ajax(settings).done(function (response) {
-  console.log(response);
   let nextEvent = response.events[0];
   $('#cal-next-event').append(`
     <div class="row">
@@ -44,13 +45,7 @@ $.ajax(settings).done(function (response) {
   }
 
   $("tr").click(function(){
-    console.log($(this).attr("data-link"));
     var url = $(this).attr("data-link"); 
     window.open(url, '_blank');
   });
-
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  })
-
 });
