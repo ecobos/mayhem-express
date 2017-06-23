@@ -1,9 +1,8 @@
-let HOST = "http://162.243.168.109:3000";
 
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": HOST+"/events",
+  "url": window.location.origin+"/events",
   "method": "GET",
   "headers": {
     "content-type": "application/json",
