@@ -4,4 +4,12 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-101507646-1', 'auto');
+
+ga('require', 'eventTracker');
+ga('require', 'impressionTracker',{
+  elements: ['sponsors', 'mission', 'calendar', 'contact']
+});
+ga('require', 'maxScrollTracker');
+ga('require', 'pageVisibilityTracker');
+
 ga('send', 'pageview');
