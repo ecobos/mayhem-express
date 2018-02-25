@@ -61,25 +61,20 @@ html {
     background: #fff;
 }
 
-#saloon-logo, #lush-logo, #lavender-logo, #lions-logo, #facebook-direct, #facebook-redirect, #email {
+#saloon-logo, #lush-logo, #lavender-logo, #solcana-logo, #facebook-direct, #facebook-redirect, #email {
     padding-bottom: 4em;
 }
 
-#saloon-logo>img {
+#saloon-logo > a >img {
     width: 150%;
 }
-#lush-logo>img {
+#lush-logo > a > img {
     width: 90%;
 }
 
-#lions-logo>img {
-    height: inherit;
+#solcana-logo > a > img {
+    width: 70%;
 }
-
-#lions-logo {
-    height: 20em;
-}
-
 
 /* --- Mission Section --- */
 .mission-section {
